@@ -1,0 +1,19 @@
+<div *ngFor = "let flat of flats">
+    <div   class="row justify-content-md-center">
+            <div class="col-sm-8 m-2 offset-2">
+              <div class="card">
+                <div class="card-body" style="display: flex">
+                <div style="flex:.5">
+                  <h5  class="card-title">{{flat.description}}</h5>
+                  <p class="card-text">{{flat.address.addr}}</p>
+                </div>
+                <div style="flex:.5">
+                  <p class="card-text">bedrooms: {{flat.bedRoomes}}</p>
+                  <p class="card-text">status: {{flat.status}}</p>
+                  <p class="card-text">price per day: {{flat.pricePerDay}}</p>
+                </div>  
+                </div>
+                <a (click)= "showDetails(flat)" style="width: 20%;margin:auto; color:white;margin-bottom:5px;cursor:pointer" class="btn btn-sm btn-primary">more  details</a>
+              </div>
+            </div>
+</div>

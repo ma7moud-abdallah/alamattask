@@ -1,0 +1,24 @@
+<div class="registeration">
+<form [formGroup]="registerationForm">
+    <div *ngIf = "!isLogin" class="form-group">
+        <label for="name">name</label>
+        <input type="text" class="form-control" id="name" name = "name" formControlName = "name" 
+            placeholder="Enter Name">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputEmail1">phone number</label>
+        <input type="number" class="form-control" name = "phone" formControlName = "phone" id="exampleInputEmail1" aria-describedby="emailHelp"
+            placeholder="Enter your phone number">
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">Password</label>
+        <input type="password" name = "password" formControlName = "password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    </div>
+    <p >{{message}} </p>
+    <button type="button" *ngIf = "isLogin" (click) = "login(registerationForm.value)"  class="btn btn-primary">login</button>
+    <button type="button" *ngIf = "!isLogin" (click) = "register(registerationForm.value)" class="btn btn-primary">register</button>
+
+    <p *ngIf = "isLogin" class="danger">have no account? <a (click) ="toggle()">reqister</a> </p>
+    <p *ngIf = "!isLogin" class="danger">already have account? <a (click) ="toggle()">login</a> </p>
+</form>
+</div>

@@ -1,0 +1,29 @@
+<div class="row justify-content-md-center">
+   <h1 style="text-align: center" class="col-sm-12">{{message}}</h1>
+        <div *ngIf = "flat"  class="col-sm-8 m-2 offset-2">
+          <div class="card">
+            <div class="card-body" style="display: flex">
+            <div style="flex:.5">
+              <h5  class="card-title">{{flat.description}}</h5>
+              <p *ngIf="flat.address" class="card-text">{{flat.address.addr}}</p>
+              <p *ngIf="flat.available" class="card-text">from : {{flat.available.startDate}}</p>
+              <p *ngIf="flat.available" class="card-text">to : {{flat.available.endDate}}</p>
+              <p class="card-text">level: {{flat.Level}}</p>
+            </div>
+            <div style="flex:.5">
+              <p class="card-text">bedrooms: {{flat.bedRoomes}}</p>
+              <p class="card-text">bathrooms: {{flat.bathrooms}}</p>
+              <p class="card-text">area: {{flat.area}} m2</p>
+              <p class="card-text">status: {{flat.status}}</p>
+              <p class="card-text">price per day: {{flat.pricePerDay}}</p>
+            </div>  
+            </div>
+            <form *ngIf = "flat.dayes">
+            <div  *ngFor = "let day of flat.dayes;let i = index" style="padding: 5px 10px" class="form-check form-check-inline">
+              <input (change) = "addDay($event,day)" class="form-check-input" [disabled] = "!day.available" type="checkbox" id="{{day._id}}" [value] = "dayesToBeReseved[i]">
+              <label class="form-check-label" for="{{day._id}}">{{displayedDate(day.day)}}</label>
+            </div>
+             <a (click)= "addReservation()" style="width: 20%;margin:auto;display: block; color:white;margin-bottom:5px;cursor:pointer" class="btn btn-sm btn-primary">add reservation</a>
+          </form>
+        </div>
+        </div>
